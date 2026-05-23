@@ -1,0 +1,73 @@
+{
+  "name": "gmail",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot-mail",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        -16
+      ],
+      "id": "2d021613-f735-47fa-ba70-a9a8977b4c31",
+      "name": "Webhook",
+      "webhookId": "27599af9-f5c1-45db-8160-78954986eda4"
+    },
+    {
+      "parameters": {
+        "fromEmail": "example@gmail.com",
+        "toEmail": "exampple@gmail.com",
+        "subject": "=AI Chatbot Answer – {{$json.body.question}}\n",
+        "emailFormat": "both",
+        "text": "=Question:\n{{$json.body.question}}\n\n----------------------\n\nAnswer:\n{{$json.body.answer}}\n",
+        "html": "=<b>Question:</b><br>\n{{$json.body.question}}<br><br>\n\n<b>Answer:</b><br>\n{{$json.body.answer}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        496,
+        -16
+      ],
+      "id": "28cc0cb5-c9aa-42c6-9508-18a8a1b348a8",
+      "name": "Send email",
+      "webhookId": "10757eb3-ac4a-4156-81d7-38b1803569c3",
+      "credentials": {
+        "smtp": {
+          "id": "K6YydLlZqOir2YeY",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d60635c3-4b68-427f-9afc-2a8e8dd0622b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f6e2ddc3bae219e4d819009621d6f8f7bdceede66808e8b0e7a631cf69657374"
+  },
+  "id": "hUT9Jf5AoE5AlukzEhri1",
+  "tags": []
+}
